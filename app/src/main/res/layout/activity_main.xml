@@ -114,6 +114,24 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="30dp"
                     android:text="Username" />
+                <ImageView
+                    android:id="@+id/comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_comment"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_below="@id/url"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textSize="15dp"
+                    android:layout_below="@+id/url"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/comments"/>
 
 
             </RelativeLayout>

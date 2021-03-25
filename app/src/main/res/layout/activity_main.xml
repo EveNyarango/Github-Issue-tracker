@@ -7,19 +7,13 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Hello World!"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Github Issue Tracker"
+        android:textColor="@color/black"
         android:padding="5dp"
         android:layout_margin="5dp"
         android:textSize="20dp"
@@ -44,10 +38,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             />
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:text="Filter by"/>
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_marginLeft="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Spinner>
+
+    </RelativeLayout>
 
 <!--card-->
     <LinearLayout
@@ -68,33 +84,42 @@
                 android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/demo"
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Demo:"
+                    android:textColor="@color/black"
+                    android:text="Created by"
                     android:textSize="18dp"
                     android:textStyle="bold" />
-
                 <TextView
                     android:id="@+id/repo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_below="@+id/demo"
-                    android:text="Repo:"
+                    android:layout_below="@+id/title"
+                    android:textColor="@color/black"
+                    android:text="Repo"
                     android:textStyle="bold"
                     android:textSize="18sp" />
 
 
-                <TextView
+<!--                <TextView-->
+<!--                    android:id="@+id/url"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_below="@id/repo"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:text="Issue url"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="18sp" />-->
+
+                <Button
                     android:id="@+id/url"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@id/repo"
-                    android:text="url:"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
+                    android:layout_below="@+id/repo"
+                    android:text="View Issue"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/avatar"
@@ -106,14 +131,16 @@
                     android:src="@drawable/user" />
 
                 <TextView
-                    android:id="@+id/username"
+                    android:id="@+id/owner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:layout_below="@+id/avatar"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="30dp"
-                    android:text="Username" />
+                    android:text="Owner" />
+
                 <ImageView
                     android:id="@+id/comments"
                     android:layout_width="wrap_content"
@@ -123,6 +150,8 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:layout_below="@id/url"/>
+
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

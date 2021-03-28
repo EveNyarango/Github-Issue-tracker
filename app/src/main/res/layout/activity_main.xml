@@ -65,111 +65,36 @@
 
     </RelativeLayout>
 
-<!--card-->
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewIssuesAll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/Layout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_margin="20dp"
-            app:cardCornerRadius="15dp"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="14dp"
+            android:visibility="visible">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="Created by"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/repo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@+id/title"
-                    android:textColor="@color/black"
-                    android:text="Repo"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-
-
-<!--                <TextView-->
-<!--                    android:id="@+id/url"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_below="@id/repo"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:text="Issue url"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textSize="18sp" />-->
-
-                <Button
-                    android:id="@+id/url"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/repo"
-                    android:text="View Issue"/>
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/avatar"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="5dp"
-                    android:src="@drawable/user" />
-
-                <TextView
-                    android:id="@+id/owner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:layout_below="@+id/avatar"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="30dp"
-                    android:text="Owner" />
-
-                <ImageView
-                    android:id="@+id/comments"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_comment"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@id/url"/>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:textSize="15dp"
-                    android:layout_below="@+id/url"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/comments"/>
-
-
-            </RelativeLayout>
-
+                android:padding="14dp"
+                android:text="No issues found"
+                android:textSize="16sp" />
         </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
-
-
+    </RelativeLayout>
 
 
 </LinearLayout>

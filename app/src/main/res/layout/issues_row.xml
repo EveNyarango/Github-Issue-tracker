@@ -12,6 +12,7 @@
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cvIssue"
             android:layout_width="match_parent"
             android:layout_margin="20dp"
             app:cardCornerRadius="15dp"
@@ -23,7 +24,7 @@
                 android:layout_margin="5dp"
                 android:padding="10dp">
                 <TextView
-                    android:id="@+id/createdat"
+                    android:id="@+id/tvCreatedat"
                     android:text="Created At"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
@@ -31,20 +32,20 @@
 
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:layout_below="@+id/createdat"
+                    android:layout_below="@+id/tvCreatedat"
                     android:text="Title"
                     android:textSize="18dp"
                     android:textStyle="bold" />
                 <TextView
-                    android:id="@+id/repo"
+                    android:id="@+id/tvRepo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_below="@+id/title"
+                    android:layout_below="@+id/tvTitle"
                     android:textColor="@color/black"
                     android:text="Repo"
                     android:textStyle="bold"
@@ -62,15 +63,18 @@
                 <!--                    android:textStyle="bold"-->
                 <!--                    android:textSize="18sp" />-->
 
-                <Button
-                    android:id="@+id/url"
+                <TextView
+                    android:id="@+id/tv_Url"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/repo"
+                    android:padding="5dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg"
+                    android:layout_below="@+id/tvRepo"
                     android:text="View Issue"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/avatar"
+                    android:id="@+id/ivAvatar"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_alignParentRight="true"
@@ -79,37 +83,37 @@
                     android:src="@drawable/user" />
 
                 <TextView
-                    android:id="@+id/owner"
+                    android:id="@+id/tvOwner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:layout_below="@+id/avatar"
+                    android:layout_below="@+id/ivAvatar"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="30dp"
                     android:text="Owner" />
 
                 <ImageView
-                    android:id="@+id/comments1"
+                    android:id="@+id/ivComments1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_comment"
                     android:layout_alignParentLeft="true"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_below="@id/url"/>
+                    android:layout_below="@id/tv_Url"/>
 
 
                 <TextView
-                    android:id="@+id/comments"
+                    android:id="@+id/tvComments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1"
                     android:textSize="15dp"
-                    android:layout_below="@+id/url"
+                    android:layout_below="@+id/tv_Url"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/comments"/>
+                    android:layout_toRightOf="@id/ivComments1"/>
 
 
             </RelativeLayout>

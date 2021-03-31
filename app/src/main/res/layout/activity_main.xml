@@ -34,16 +34,16 @@
         android:layout_height="wrap_content">
 
         <SearchView
-            android:id="@+id/searchview"
+            android:id="@+id/svUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button"
-            android:layout_margin="5dp"
-            />
+            android:layout_margin="5dp"/>
 
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/rlIssues"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp">
@@ -66,35 +66,13 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewIssuesAll"
+        android:id="@+id/rvIssues"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:layout_height="wrap_content"/>
 
-    </androidx.recyclerview.widget.RecyclerView>
 
-    <RelativeLayout
-        android:id="@+id/Layout2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="14dp"
-            android:visibility="visible">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="14dp"
-                android:text="No issues found"
-                android:textSize="16sp" />
-        </androidx.cardview.widget.CardView>
-
-    </RelativeLayout>
 
 
 </LinearLayout>

@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 } else {
                     Log.e(TAG, "Unsuccessful: " + parseErrorResponse(response));
-                    //showUnsuccessfulMessage();
+
                 }
             }
             @Override
@@ -100,8 +100,39 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             setUpFilterBy();
             setUpDate();
+        setUpIssues();
 
 
+    }
+
+    private void setUpIssues() {
+      
+         recyclerView.setVisibility(View.VISIBLE);
+        issueAdapter = new IssueAdapter(mIssuesList);
+         recyclerView.setAdapter(issueAdapter);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+         recyclerView.setLayoutManager(layoutManager);
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterIssues(newText.toLowerCase());
+                return false;
+            }
+        });
+    }
+    private void filterIssues(String query) {
+        List<GithubIssue> tempRepoIssue = new ArrayList<>();
+        for (GithubIssue title : mIssuesList) {
+            if (title.getTitle().toLowerCase().contains(query)) {
+                tempRepoIssue.add(title);
+            }
+        }
+        issueAdapter.updateList(tempRepoIssue);
     }
 
     private void setUpDate() {
@@ -142,14 +173,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 int year = cal.get(Calendar.YEAR);
 
                 int dateFromIndex = 0;
-                List<GithubIssue> tempRepoIssue = new ArrayList<>();
+                List<GithubIssue> tempIssue = new ArrayList<>();
 
                 if (position > 0) {
                     dateFromIndex = position;
                 }
 
                 if (dateFromIndex == 0) {
-                    tempRepoIssue = mIssuesList;
+                    tempIssue = mIssuesList;
                 } else {
                     for (GithubIssue title : mIssuesList) {
                         Date d = null;
@@ -166,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                             int weekIssue = calIssue.get(Calendar.WEEK_OF_YEAR);
                             if (week == weekIssue) {
-                                tempRepoIssue.add(title);
+                                tempIssue.add(title);
                             }
                         } else if (dateFromIndex == 2) {
                             Calendar calIssue = Calendar.getInstance();
@@ -175,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                             int monthIssue = calIssue.get(Calendar.MONTH);
                             int yearIssue = calIssue.get(Calendar.YEAR);
                             if (month == monthIssue && year == yearIssue) {
-                                tempRepoIssue.add(title);
+                                tempIssue.add(title);
                             }
                         } else {
                             Calendar calIssue = Calendar.getInstance();
@@ -183,13 +214,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                             int yearIssue = calIssue.get(Calendar.YEAR);
                             if (year == yearIssue) {
-                                tempRepoIssue.add(title);
+                                tempIssue.add(title);
                             }
                         }
                     }
                 }
 
-                issueAdapter.updateList(tempRepoIssue);
+                issueAdapter.updateList(tempIssue);
 
             }
 

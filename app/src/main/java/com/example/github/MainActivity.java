@@ -120,12 +120,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filterIssues(newText.toLowerCase());
+                searchIssues(newText.toLowerCase());
                 return false;
             }
         });
     }
-    private void filterIssues(String query) {
+    private void searchIssues(String query) {
         List<GithubIssue> tempRepoIssue = new ArrayList<>();
         for (GithubIssue title : mIssuesList) {
             if (title.getTitle().toLowerCase().contains(query)) {

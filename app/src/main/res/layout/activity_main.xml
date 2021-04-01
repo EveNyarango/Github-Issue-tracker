@@ -35,7 +35,7 @@
         android:layout_marginLeft="150dp"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:text="Enter Username"
+        android:text="Enter Issue Title"
         android:gravity="center_horizontal" />
 
     <LinearLayout

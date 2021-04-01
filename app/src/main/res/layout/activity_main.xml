@@ -20,6 +20,15 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mon , 21 April"
+        android:layout_marginLeft="15dp"
+        android:textSize="16sp" />
+
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
@@ -46,7 +55,7 @@
         android:id="@+id/rlIssues"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        >
 
         <TextView
             android:id="@+id/filter"
@@ -54,11 +63,14 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
             android:text="Filter by"/>
 
         <Spinner
             android:id="@+id/spinner1"
-            android:layout_marginLeft="100dp"
+            android:layout_toRightOf="@+id/filter"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </Spinner>

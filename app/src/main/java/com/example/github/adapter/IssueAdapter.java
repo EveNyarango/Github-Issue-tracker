@@ -28,9 +28,10 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.IssueViewHolder> {
-    private final List<GithubIssue> mIssueList;
+    private List<GithubIssue> mIssueList;
 
     public IssueAdapter(List<GithubIssue> issuesList) {
+
         mIssueList = issuesList;
     }
     @NonNull
@@ -47,6 +48,12 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.IssueViewHol
     public int getItemCount() {
         return mIssueList.size();
     }
+
+    public void updateList(List<GithubIssue> repoIssues) {
+        mIssueList = repoIssues;
+        notifyDataSetChanged();
+    }
+
     public class IssueViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @SuppressLint("NonConstantResourceId")
         @BindView(R.id.tvCreatedat) TextView mCreateDate;
@@ -92,80 +99,6 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.IssueViewHol
             //mUrl.setText(githubIssue.getHtmlUrl());
         }
     }
-//    private List<GithubIssue> mIssuesList;
-//    private Context mContext;
-//
-//    public IssueAdapter(Context context, List<GithubIssue> issues){
-//        mContext = context;
-//        mIssuesList  = issues;
-//    }
-//
-//
-//    @NonNull
-//    @Override
-//    public IssueAdapter.IssueViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.issues_row, parent, false);
-//        IssueViewHolder viewHolder = new IssueViewHolder(view);
-//        return viewHolder;
-//
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull IssueAdapter.IssueViewHolder holder, int position) {
-//        holder.bindAll(mIssuesList.get(position));
-////        Picasso.with(mContext).load(mIssuesList.get(position).getUser().getAvatarUrl()).into(holder.mAvatar);
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return mIssuesList.size();
-//    }
-//
-//    public void newList(List<GithubIssue> issueList){
-//        mIssuesList = issueList;
-//        notifyDataSetChanged();
-//    }
-//
-//    public class IssueViewHolder extends RecyclerView.ViewHolder {
-//
-//        @BindView(R.id.tvCreatedat) TextView mCreateDate;
-//        @BindView(R.id.tvTitle) TextView mTitle;
-//        @BindView(R.id.tvRepo) TextView mRepo;
-//        @BindView(R.id.tvOwner) TextView mOwner;
-//        @BindView(R.id.tvComments) TextView mComments;
-//        @BindView(R.id.btn_Url) Button mUrl;
-//        private Context mContext;
-//        @BindView(R.id.ivAvatar) CircleImageView mAvatar;
-//        public IssueViewHolder(View itemView) {
-//            super(itemView);
-//            ButterKnife.bind(this, itemView);
-//            mContext = itemView.getContext();
-//        }
-//
-//
-//        public void bindAll(GithubIssue githubIssue) {
-//            SimpleDateFormat input = new SimpleDateFormat( "yyyy-MM-dd'T'HH:mm:ss'Z'");
-//            SimpleDateFormat output = new SimpleDateFormat( "dd MMMM yyyy");
-//            Date d = null;
-//            try{
-//                d = input.parse(githubIssue.getCreatedAt());
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//            mCreateDate.setText(output.format(d));
-//            mTitle.setText(githubIssue.getTitle());
-//            mRepo.setText(githubIssue.getRepository().getName());
-//            mOwner.setText(githubIssue.getUser().getLogin());
-//            mComments.setText(String.valueOf(githubIssue.getComments()));
-//            mUrl.setText(githubIssue.getState());
-////            Picasso.with(mContext).load(mIssuesList.get(position).getUser().getAvatarUrl()).into(holder.mAvatar);
-//
-//
-//
-//
-//
-//
-//        }
-//    }
+
 
 }

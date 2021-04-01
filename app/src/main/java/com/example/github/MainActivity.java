@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.github.adapter.IssueAdapter;
 import com.example.github.models.GithubIssue;
@@ -24,7 +25,12 @@ import com.example.github.ui.SplashActivity;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,16 +43,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @BindView(R.id.spinner1) Spinner mSpinner;
     @BindView(R.id.rvIssues)
     RecyclerView recyclerView;
+    @BindView(R.id.tvDate) TextView mDate;
+
+
     private IssueAdapter issueAdapter;
     private List<GithubIssue> mIssuesList;
     private ProgressDialog progressDialog;
+    Date date;
     private static final String TAG = MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-//        loadingScreen();
+
         Spinner spinner = findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.filter, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -56,8 +66,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         issueAdapter = new IssueAdapter(mIssuesList);
         recyclerView.setAdapter(issueAdapter);
+
         GithubApi client = GithubClient.getClient();
-        Call<List<GithubIssue>> call = client.getUserIssues("204b78f29b02a15221e2183fc88f08bc60f3b69e","all");
+        Call<List<GithubIssue>> call = client.getUserIssues("access_token","all");
         call.enqueue(new Callback<List<GithubIssue>>() {
             @Override
             public void onResponse(Call<List<GithubIssue>> call, Response<List<GithubIssue>> response) {
@@ -81,18 +92,116 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onFailure(Call<List<GithubIssue>> call, Throwable t) {
                 Log.e(TAG, "onFailure: ",t );
-                //hideProgressBar();
-                //showFailureMessage();
+
+            }
+        });
+
+
+
+            setUpFilterBy();
+            setUpDate();
+
+
+    }
+
+    private void setUpDate() {
+        Calendar calendar = Calendar.getInstance();
+
+        date = calendar.getTime();
+
+        String stringDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
+        mDate.setText(stringDate.replace("2021", ""));
+    }
+
+    private void setUpFilterBy() {
+        String[] arrayFilterBy = new String[]{"All", "This Week", "This Month", "This Year"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, R.layout.support_simple_spinner_dropdown_item, android.R.id.text1);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(adapter);
+
+        for (String filterOptions : arrayFilterBy
+        ) {
+            adapter.add(filterOptions);
+
+        }
+        adapter.notifyDataSetChanged();
+
+
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(MainActivity.this, position, Toast.LENGTH_LONG).show();
+                ((TextView) view).setText(null);
+                SimpleDateFormat input = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                int week = cal.get(Calendar.WEEK_OF_YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int year = cal.get(Calendar.YEAR);
+
+                int dateFromIndex = 0;
+                List<GithubIssue> tempRepoIssue = new ArrayList<>();
+
+                if (position > 0) {
+                    dateFromIndex = position;
+                }
+
+                if (dateFromIndex == 0) {
+                    tempRepoIssue = mIssuesList;
+                } else {
+                    for (GithubIssue title : mIssuesList) {
+                        Date d = null;
+                        try {
+                            d = input.parse(title.getCreatedAt());
+
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        if (dateFromIndex == 1) {
+                            Calendar calIssue = Calendar.getInstance();
+                            calIssue.setTime(d);
+
+                            int weekIssue = calIssue.get(Calendar.WEEK_OF_YEAR);
+                            if (week == weekIssue) {
+                                tempRepoIssue.add(title);
+                            }
+                        } else if (dateFromIndex == 2) {
+                            Calendar calIssue = Calendar.getInstance();
+                            calIssue.setTime(d);
+
+                            int monthIssue = calIssue.get(Calendar.MONTH);
+                            int yearIssue = calIssue.get(Calendar.YEAR);
+                            if (month == monthIssue && year == yearIssue) {
+                                tempRepoIssue.add(title);
+                            }
+                        } else {
+                            Calendar calIssue = Calendar.getInstance();
+                            calIssue.setTime(d);
+
+                            int yearIssue = calIssue.get(Calendar.YEAR);
+                            if (year == yearIssue) {
+                                tempRepoIssue.add(title);
+                            }
+                        }
+                    }
+                }
+
+                issueAdapter.updateList(tempRepoIssue);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
     }
-    //    private void loadingScreen() {
-//        progressDialog = new ProgressDialog(this);
-//        progressDialog.setTitle("Looking for User");
-//        progressDialog.setMessage("Searching for user with the given username");
-//        progressDialog.setCancelable(false);
-//    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

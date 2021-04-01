@@ -2,9 +2,9 @@
     <string name="app_name">Github</string>
 
     <string-array name="filter">
-        <item>Id</item>
-        <item>Title</item>
-        <item>Created at</item>
-        <item>Repository</item>
+        <item>All</item>
+        <item>This Week</item>
+        <item>This Month</item>
+        <item>This year</item>
     </string-array>
 </resources>

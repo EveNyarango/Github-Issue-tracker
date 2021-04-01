@@ -13,9 +13,9 @@ import retrofit2.http.Query;
 
 public interface GithubApi {
 
-//    @GET("users/{username}" + Constant.GITHUB_API_TOKEN)
-//    Call<GithubProfile> getProfile(
-//            @Path("username") String username);
+    @GET("users/{username}" + Constant.GITHUB_API_TOKEN)
+    Call<GithubProfile> getProfile(
+            @Path("username") String username);
 
     @GET("issues")
     Call<List<GithubIssue>> getUserIssues(

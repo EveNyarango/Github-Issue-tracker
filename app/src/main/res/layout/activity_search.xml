@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@color/lighter"
+
     android:orientation="vertical"
     android:layout_centerVertical="true"
     tools:context=".ui.SearchActivity">
@@ -13,7 +15,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/gitpic5"/>
+        android:src="@drawable/gitty"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,22 +41,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="21dp"
-        android:padding="5dp"
+        android:padding="10dp"
         android:text="This is an application that allows you to view Github issues for different users."
         android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:gravity="center_horizontal" />
 
-    <TextView
-        android:id="@+id/tv_Username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Kindly enter a github Username"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:gravity="center_horizontal" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_Username"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Kindly enter a github Username"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="16sp"-->
+<!--        android:gravity="center_horizontal" />-->
 
     <EditText
         android:id="@+id/et_username"
@@ -63,9 +65,9 @@
         android:background="@drawable/bg2"
         android:layout_marginTop="5dp"
         android:ems="10"
-        android:hint="Github Username"
+        android:hint=" Enter Github Username"
         android:inputType="textPersonName"
-        android:padding="14dp" />
+        android:padding="7dp" />
 
     <Button
         android:id="@+id/btn_search"

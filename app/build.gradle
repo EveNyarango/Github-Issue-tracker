@@ -15,6 +15,11 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    testOptions {
+        unitTests{
+            includeAndroidResources = true
+        }
+    }
 
     buildTypes {
         release {
@@ -62,5 +67,11 @@ dependencies {
 //    Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+//    Roboelectric
+    testImplementation "org.robolectric:robolectric:3.8"
+//    Espresso
+    androidTestImplementation 'androidx.test:rules:1.1.0'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
 }

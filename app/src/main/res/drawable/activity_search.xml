@@ -15,12 +15,13 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/gitty"/>
+        android:src="@drawable/gitty"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome!"
+        android:text="@string/welcome"
         android:textColor="@color/light"
         android:textSize="20sp"
         android:textStyle="bold"/>
@@ -30,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="21dp"
-        android:text="GITHUB ISSUE TRACKER"
+        android:text="@string/github_issue_tracker"
         android:textAlignment="center"
         android:textColor="@color/light"
         android:textStyle="bold"
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="21dp"
         android:padding="10dp"
-        android:text="This is an application that allows you to view Github issues for different users."
+        android:text="@string/this_is_an_application_that_allows_you_to_view_github_issues_for_different_users"
         android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -65,7 +66,7 @@
         android:background="@drawable/bg2"
         android:layout_marginTop="5dp"
         android:ems="10"
-        android:hint=" Enter Github Username"
+        android:hint="@string/enter_github_username"
         android:inputType="textPersonName"
         android:padding="7dp" />
 

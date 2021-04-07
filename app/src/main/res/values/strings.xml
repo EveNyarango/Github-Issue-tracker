@@ -1,6 +1,22 @@
 <resources>
     <string name="app_name">Github</string>
 
+    <string name="opened">Opened</string>
+    <string name="open">Open</string>
+    <string name="container_card_text">Container Card containers hold all card elements, and their size is determined by the space those elements occupy.</string>
+    <string name="owner">Owner</string>
+    <string name="comments">comments</string>
+    <string name="repositories">Repositories</string>
+    <string name="user_name">user name</string>
+    <string name="date_created">Date Created</string>
+    <string name="issues">Issues</string>
+    <string name="enter_github_user_name">Enter Github User Name</string>
+    <string name="todo">TODO</string>
+    <string name="welcome">Welcome!</string>
+    <string name="github_issue_tracker">GITHUB ISSUE TRACKER</string>
+    <string name="this_is_an_application_that_allows_you_to_view_github_issues_for_different_users">This is an application that allows you to view Github issues for different users.</string>
+    <string name="enter_github_username">Enter Github Username</string>
+
     <string-array name="filter">
         <item>All</item>
         <item>This Week</item>

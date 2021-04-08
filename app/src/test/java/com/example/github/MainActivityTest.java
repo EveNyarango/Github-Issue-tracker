@@ -27,17 +27,17 @@ public class MainActivityTest {
     }
 
 
-    @Test
-    public void validateTextViewContent(){
-        TextView appName= activity.findViewById(R.id.appName);
-        assertTrue("Github Issue Tracker".equals(appName.getText().toString()));
-    }
-    @Test
-    public void secondActivityStarted(){
-        activity.findViewById(R.id.btn_search).performClick();
-        Intent expectedIntent = new Intent(activity, UserActivity.class);
-        ShadowActivity shadowActivity = org.robolectric.Shadows.shadowOf(activity);
-        Intent actualIntent = shadowActivity.getNextStartedActivity();
-        assertTrue(actualIntent.filterEquals(expectedIntent));
-    }
+//    @Test
+//    public void validateTextViewContent(){
+//        TextView appName= activity.findViewById(R.id.appName);
+//        assertTrue("Github Issue Tracker".equals(appName.getText().toString()));
+//    }
+//    @Test
+//    public void secondActivityStarted(){
+//        activity.findViewById(R.id.btn_search).performClick();
+//        Intent expectedIntent = new Intent(activity, UserActivity.class);
+//        ShadowActivity shadowActivity = org.robolectric.Shadows.shadowOf(activity);
+//        Intent actualIntent = shadowActivity.getNextStartedActivity();
+//        assertTrue(actualIntent.filterEquals(expectedIntent));
+//    }
 }

@@ -36,26 +36,19 @@ public class MainActivityInstrumentationTest {
                 .check(matches(withText("EveNyarango")));
     }
 
+
 //    @Test
-//    public void usernameIsSentToUserActivity() {
+//    public void locationIsSentUserActivity(){
 //        String username = "EveNyarango";
-//        onView(withId(R.id.et_username)).perform(typeText(username));
+//        onView(withId(R.id.et_username)).perform(typeText(username)).perform(closeSoftKeyboard());
+//        try {                             // the sleep method requires to be checked and handled so we use try block
+//            Thread.sleep(250);
+//        } catch (InterruptedException e){
+//            System.out.println("got interrupted!");
+//        }
 //        onView(withId(R.id.btn_search)).perform(click());
-//        onView(withId(R.id.userRecyclerView)).check(matches(withText("userRecyclerView")));
+//        onView(withId(R.id.userRecyclerView)).check(matches
+//                (withText("userRecyclerView)")));
+//
 //    }
-
-    @Test
-    public void locationIsSentUserActivity(){
-        String username = "EveNyarango";
-        onView(withId(R.id.et_username)).perform(typeText(username)).perform(closeSoftKeyboard());
-        try {                             // the sleep method requires to be checked and handled so we use try block
-            Thread.sleep(250);
-        } catch (InterruptedException e){
-            System.out.println("got interrupted!");
-        }
-        onView(withId(R.id.btn_search)).perform(click());
-        onView(withId(R.id.userRecyclerView)).check(matches
-                (withText("userRecyclerView)")));
-
-    }
 }

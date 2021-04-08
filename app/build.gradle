@@ -29,7 +29,7 @@ android {
         }
     }
     buildTypes.each {
-        it.buildConfigField 'String', 'GITHUB_API_TOKEN', GithubApiToken
+        it.buildConfigField 'String', 'GITHUB_API_TOKEN', Eve
     }
 
 

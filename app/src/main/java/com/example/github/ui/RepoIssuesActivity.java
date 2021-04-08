@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 
 import com.example.github.R;
@@ -36,6 +37,10 @@ public class RepoIssuesActivity extends AppCompatActivity {
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.issueRecyclerView)
     RecyclerView mRecyclerView;
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.noIssuesTextView)
+    TextView mNoIssuesTextView;
     private List<GithubIssue> mIssuesList;
     private IssueAdapter issueAdapter;
 
@@ -67,7 +72,11 @@ public class RepoIssuesActivity extends AppCompatActivity {
                             new LinearLayoutManager(RepoIssuesActivity.this);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
-                    mRecyclerView.setVisibility(View.VISIBLE);
+                    if(mIssuesList.size() == 0){
+                        mNoIssuesTextView.setVisibility(View.VISIBLE);
+                    } else {
+                        mRecyclerView.setVisibility(View.VISIBLE);
+                    }
 
                 } else {
                     Log.e(TAG, "Unsuccessful: " + parseErrorResponse(response));

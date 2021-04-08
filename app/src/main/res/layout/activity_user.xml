@@ -11,4 +11,12 @@
         android:visibility="gone"
         android:layout_height="wrap_content"/>
 
+    <TextView
+        android:id="@+id/noUsersTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/no_github_users_by_that_name_found"
+        android:visibility="gone"/>
+
 </RelativeLayout>

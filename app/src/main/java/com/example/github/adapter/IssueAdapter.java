@@ -4,9 +4,12 @@ import android.annotation.SuppressLint;
 
 import android.content.Context;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,7 +48,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.IssueViewHol
         return mIssueList.size();
     }
 
-    public static class IssueViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class IssueViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @SuppressLint("NonConstantResourceId")
         @BindView(R.id.dateOpenedTextView) TextView mOpenedAt;
         @SuppressLint("NonConstantResourceId")
@@ -54,15 +57,25 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.IssueViewHol
         @BindView(R.id.issueOwnerTextView) TextView mOwner;
         @SuppressLint("NonConstantResourceId")
         @BindView(R.id.commentsTextView) TextView mComments;
+        @SuppressLint("NonConstantResourceId")
+        @BindView(R.id.openIssueButton)
+        Button mIssuesButton;
+
+        private final Context mContext;
+
 
         public IssueViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            Context mContext = itemView.getContext();
+            this.mContext = itemView.getContext();
+            mIssuesButton.setOnClickListener(this);
         }
         @Override
         public void onClick(View v) {
-
+            int itemPosition = getLayoutPosition();
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+            browserIntent.setData(Uri.parse(mIssueList.get(itemPosition).getHtmlUrl()));
+            mContext.startActivity(browserIntent);
         }
         @SuppressLint("SetTextI18n")
         public void bindIssue(GithubIssue githubIssue) {

@@ -3,6 +3,8 @@ package com.example.github.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.example.github.Constant.PREFERENCES_USERNAME_KEY;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
 
@@ -80,7 +84,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, UserReposActivity.class);
-            intent.putExtra("userName", mUsers.get(itemPosition).getLogin());
+            String userName = mUsers.get(itemPosition).getLogin();
+            intent.putExtra(PREFERENCES_USERNAME_KEY, userName);
+            SharedPreferences mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
+            SharedPreferences.Editor mEditor = mSharedPreferences.edit();
+            mEditor.putString(PREFERENCES_USERNAME_KEY, userName).apply();
             mContext.startActivity(intent);
         }
     }

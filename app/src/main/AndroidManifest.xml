@@ -11,9 +11,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Github">
-        <activity android:name=".ui.UserReposActivity"></activity>
-        <activity android:name=".ui.RepoIssuesActivity" />
-        <activity android:name=".ui.UserActivity" />
+        <activity android:name=".ui.UserReposActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.github.ui.UserActivity">
+            </meta-data>
+        </activity>
+
+        <activity android:name=".ui.RepoIssuesActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.github.ui.UserReposActivity">
+            </meta-data>
+        </activity>
+
+        <activity android:name=".ui.UserActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.github.ui.MainActivity">
+            </meta-data>
+        </activity>
         <activity
             android:name=".ui.MainActivity">
 

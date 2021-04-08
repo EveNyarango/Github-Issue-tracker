@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,17 +19,22 @@ import com.example.github.R;
 import com.example.github.models.Repository;
 import com.example.github.ui.RepoIssuesActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder> {
+public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder> implements Filterable {
 
-    private final List<Repository> mRepos;
+    private List<Repository> mRepos;
+
+    private List<Repository> repoListFiltered;
+
 
     public RepoAdapter(List<Repository> mRepos) {
         this.mRepos = mRepos;
+        repoListFiltered = new ArrayList<>(mRepos);
     }
 
     @NonNull
@@ -47,6 +54,38 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
     public int getItemCount() {
         return mRepos.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+
+    private final Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Repository> filteredList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(repoListFiltered);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (Repository repo : repoListFiltered) {
+                    if (repo.getName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(repo);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mRepos.clear();
+            mRepos.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
 
     public class RepoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @SuppressLint("NonConstantResourceId")
@@ -89,3 +128,5 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
 
 
 }
+
+

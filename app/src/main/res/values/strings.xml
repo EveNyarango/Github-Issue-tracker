@@ -16,6 +16,10 @@
     <string name="github_issue_tracker">GITHUB ISSUE TRACKER</string>
     <string name="this_is_an_application_that_allows_you_to_view_github_issues_for_different_users">This is an application that allows you to view Github issues for different users.</string>
     <string name="enter_github_username">Enter Github Username</string>
+    <string name="search">Search</string>
+    <string name="no_repositories_found_for_this_user">No Repositories Found For This User</string>
+    <string name="no_issues_found_for_this_repository">No Issues Found For This Repository</string>
+    <string name="no_github_users_by_that_name_found">No Github Users By That Name Found</string>
 
     <string-array name="filter">
         <item>All</item>

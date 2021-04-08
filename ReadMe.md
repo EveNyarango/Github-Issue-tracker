@@ -16,7 +16,9 @@ Clone or download this repository (link in the section below) to your local mach
 Run the application on the emulator
 
 ## BDD
-Get access to Api token
+Get access to the Github Api token. 
+
+Generate gradle properties and replace the access_token  with a valid access token from github; GithubApiToken = "Bearer access_token"
 
 Run the app
 
@@ -26,9 +28,9 @@ Then search the user
 
 Pick the particular user if you get different users
 
-Click on Repositories button
+Click on Repositories button to view the user repositories
 
-Click on issue for a  particular repository
+Click on issue for a  particular repository to view the issues if the repository has issues
 
 View the issue on github by clicking open.
 

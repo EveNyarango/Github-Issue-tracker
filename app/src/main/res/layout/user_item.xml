@@ -10,7 +10,7 @@
         android:layout_height="180dp"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        app:cardBackgroundColor="#E6E6E6"
+        app:cardBackgroundColor="@color/lighter"
         app:cornerRadius="15dp"
         app:cardElevation="55dp"
         android:padding="1dp"
@@ -44,6 +44,7 @@
                     android:layout_alignParentEnd="true"
                     android:text="@string/user_name"
                     android:textSize="18sp"
+                    android:textColor="@color/black"
                     android:layout_marginRight="10dp"
                     android:layout_centerVertical="true"/>
 

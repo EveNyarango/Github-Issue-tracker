@@ -10,7 +10,7 @@
         android:layout_height="180dp"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        app:cardBackgroundColor="#E6E6E6"
+        app:cardBackgroundColor="@color/lighter"
         app:cornerRadius="15dp">
 
         <LinearLayout

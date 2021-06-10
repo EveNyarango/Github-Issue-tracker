@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/lighter"
+    android:orientation="vertical"
+    android:layout_centerVertical="true"
+    tools:context=".ui.SearchActivity">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/gitty"
+        android:contentDescription="@string/todo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:textColor="@color/light"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:text="@string/github_issue_tracker"
+        android:textAlignment="center"
+        android:textColor="@color/light"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center_horizontal" />
+    <TextView
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:padding="10dp"
+        android:text="@string/this_is_an_application_that_allows_you_to_view_github_issues_for_different_users"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_Username"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Kindly enter a github Username"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="16sp"-->
+<!--        android:gravity="center_horizontal" />-->
+
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg2"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="@string/enter_github_username"
+        android:inputType="textPersonName"
+        android:padding="7dp" />
+
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/light"
+        android:elevation="100dp"
+        android:layout_marginTop="5dp"
+        android:text="search"
+        app:cornerRadius="40dp" />
+
+
+</LinearLayout>
